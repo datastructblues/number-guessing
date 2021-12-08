@@ -68,7 +68,7 @@ public class GuessNumber {
         FileOutputStream file = null;
             try {
                 file=new FileOutputStream("highscores.dat",true);
-                String score=(name+":"+ point);
+                String score=(name+":"+ point + " point ");
                 byte[] array=score.getBytes(StandardCharsets.UTF_8);
                 try{
                     String lineSeparator = System.getProperty("line.separator");
