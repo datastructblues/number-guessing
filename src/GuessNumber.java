@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -69,11 +68,13 @@ public class GuessNumber {
         FileOutputStream file = null;
             try {
                 file=new FileOutputStream("highscores.dat",true);
-                String score=(name+":"+ point+ " point");
+                String score=(name+":"+ point);
                 byte[] array=score.getBytes(StandardCharsets.UTF_8);
                 try{
-                   file.write(array);
-                   file.flush();
+                    String lineSeparator = System.getProperty("line.separator");
+                    file.write(array);
+                    file.write(lineSeparator.getBytes());
+                    file.flush();
                 }catch (IOException e){
                     e.printStackTrace();
                 }
