@@ -17,7 +17,7 @@ public class GuessNumber {
     }
     public static String compareGuess(int userAnswer, int computerAnswer, int ct) {
         if (userAnswer == computerAnswer) {
-            return "Correct!\n Attempt number: " + ct + "\n Your point: " + calculatePoint(point, count);
+            return "Correct!\n Attempt number: " + ct + "\n Your point: " + calculatePoint(count);
         } else if (userAnswer <= 0 || userAnswer > 100) {
             return "Invalid range";
         } else if (userAnswer > computerAnswer) {
@@ -30,11 +30,11 @@ public class GuessNumber {
     }
 
     public static void startGame() {
-        int computerNumber = (int) (Math.random() * 100 + 1);
+      int computerNumber = (int) (Math.random() * 100 + 1);
         int userAnswer = 0;
         while (userAnswer!=computerNumber) {
-            if(++count>=10) {
-                JOptionPane.showMessageDialog(null, "Game over... \n Correct number is: "+computerNumber);
+            if(++count>10) {
+                JOptionPane.showMessageDialog(null, "Game over... \n Correct number is: "+computerNumber +" \n Your point:"+ 0);
                 break;
             }
             String response = JOptionPane.showInputDialog(null,
@@ -47,16 +47,11 @@ public class GuessNumber {
                 JOptionPane.showMessageDialog(null, "Number expected.");
             }
             JOptionPane.showMessageDialog(null, "" + compareGuess(userAnswer, computerNumber, count));
-
         }
-        point=calculatePoint(point,count);
+        point = calculatePoint(count);
     }
-    public static int calculatePoint(int point,int count){
-
-        return point=((10-count)*100)+100;
-    }
-    public static int getPoint(){
-        return point;
+    public static Integer calculatePoint(int count){
+        return ((10-count)*100)+100;
     }
 
     public static String getPlayerName(){
@@ -90,6 +85,3 @@ public class GuessNumber {
     }
 
 }
-
-
-
